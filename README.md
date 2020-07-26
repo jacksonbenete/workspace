@@ -21,9 +21,11 @@ For some reason the OS can't print Crouton window right, so I add a photograph a
 As you can see in those images, spacemacs is running in Chromium OS very well, after a lot of experimentation and frustration. But in fact you can do that very easily with Crouton using xiwi so you don't have to run and entire chroot distro.
 
 You need to download Crouton release in https://github.com/dnschneid/crouton
-and then you should install xfce,xiwi and cli-extra (cli-extra is optional)
+and then you should install xfce,xiwi and cli-extra (cli-extra is optional).
+I suggest that you use a *Debian Buster* environment or more recent (>= 26.1), 
+as users have reported errors using older environments that ship older and problematic versions of emacs (< 26.x).
 ```
-  sudo sh ~/Downloads/crouton -t xfce,xiwi,cli-extra
+  sudo crouton -r buster -t xfce,xiwi,cli-extra
 ```
   
 Now you can start the chroot for the basic configuration, that's why I have installed cli-extra, so I dont need to load entire xfce to do shell steps now and later on if needed.
@@ -37,7 +39,6 @@ Now you need to run in order:
   [ -d /usr/share/fonts/opentype ] || sudo mkdir /usr/share/fonts/opentype
   sudo git clone --depth 1 --branch release https://github.com/adobe-fonts/source-code-pro.git /usr/share/fonts/opentype/scp
   sudo fc-cache -f -v
-  sudo add-apt-repository "deb http://dev.naver.com/repos deb/"
   sudo apt-get update
   sudo apt-get install fonts-nanum fonts-nanum-coding fonts-nanum-extra
   sudo apt-get install emacs
